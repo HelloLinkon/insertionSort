@@ -8,10 +8,9 @@
 
 using namespace std;
 
-int main ()
+float timingSort()
 {
-
-  int a, range =1000;
+    int a, range =1000;
   int i,j,key;
   clock_t t;
   int myArray[range];
@@ -61,7 +60,24 @@ int main ()
 
     //end time
     t = clock() - t;
-    printf ("It took me %d clicks (%f seconds).\n",t,((float)t)/CLOCKS_PER_SEC);
+    //printf ("It took me %d clicks (%f seconds).\n",t,((float)t)/CLOCKS_PER_SEC);
+    return ((float)t)/CLOCKS_PER_SEC;
+}
+
+int main ()
+{
+    float t,a;
+
+    //write in file
+  ofstream myfile;
+  myfile.open ("timelog.txt");
+  for(a =0; a<50; a++)
+  {
+      t = timingSort();
+        printf("%f", t);
+       myfile <<"Time of 100 Number: " << t << "\n";
+  }
+
 
     return 0;
 }
